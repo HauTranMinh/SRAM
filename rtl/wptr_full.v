@@ -32,7 +32,7 @@ module wptr_full #(parameter ADDRSIZE=8)
 	end
 	
 //=========================================================================//
-//Memory to write address pointer
+//Memory to write address pointerv
 	assign waddr = wbin[ADDRSIZE-1:0];
 
 	assign wbinnext = wbin + (winc & ~wfull);
@@ -40,7 +40,7 @@ module wptr_full #(parameter ADDRSIZE=8)
 
 
 
-	assign wfull_val = (wgraycode_next == {~wq2_rptr[ADDRSIZE:ADDRSIZR-1],wq2_rptr[ADDRSIZE - 2:0]});
+	assign wfull_val = (wgraynext == {~wq2_rptr[ADDRSIZE:ADDRSIZR-1],wq2_rptr[ADDRSIZE - 2:0]});
 
 	always @(posedge wclk or negedge wrst_n) begin
 		if(!wrst_n) begin
